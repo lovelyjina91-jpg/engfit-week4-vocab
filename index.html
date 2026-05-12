@@ -3,47 +3,107 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>EngFit 영핏 · Week 4 단어 테스트</title>
+<title>EngFit 영핏 · Week 4 단어 테스트 🍋</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Gaegu:wght@400;700&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;0,800;0,900;1,700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body { height: 100%; }
+  :root {
+    --lemon: #FFD93D;
+    --lemon-deep: #F6BE00;
+    --lemon-soft: #FFF1A8;
+    --cream: #FFFBEA;
+    --ink: #2b2b2b;
+    --ink-soft: #6b6450;
+    --leaf: #6FB04A;
+  }
   body {
-    font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #2b2b3a;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffeef5 0%, #e0f2ff 35%, #f5e6ff 70%, #fff5e6 100%);
-    background-attachment: fixed;
+    background: var(--cream);
     overflow-x: hidden;
     position: relative;
   }
-  /* Floating blobs */
-  body::before, body::after {
-    content: '';
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
+
+  /* === Lemon background pattern === */
+  .bg-pattern {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-color: #FFFBEA;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'>\
+<g opacity='0.85'>\
+<!-- Big lemon slice top left -->\
+<g transform='translate(60,70) rotate(-15)'>\
+  <circle cx='0' cy='0' r='55' fill='%23FFEB7A' stroke='%23F6BE00' stroke-width='3'/>\
+  <circle cx='0' cy='0' r='42' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
+  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
+    <line x1='0' y1='-40' x2='0' y2='40'/>\
+    <line x1='-40' y1='0' x2='40' y2='0'/>\
+    <line x1='-28' y1='-28' x2='28' y2='28'/>\
+    <line x1='-28' y1='28' x2='28' y2='-28'/>\
+  </g>\
+  <ellipse cx='15' cy='-15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(45 15 -15)'/>\
+  <ellipse cx='-15' cy='-15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(-45 -15 -15)'/>\
+  <ellipse cx='15' cy='15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(-45 15 15)'/>\
+  <ellipse cx='-15' cy='15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(45 -15 15)'/>\
+</g>\
+<!-- Half lemon top right -->\
+<g transform='translate(310,40) rotate(25)'>\
+  <circle cx='0' cy='0' r='48' fill='%23FFE25B' stroke='%23F6BE00' stroke-width='3'/>\
+  <circle cx='0' cy='0' r='36' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
+  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
+    <line x1='0' y1='-34' x2='0' y2='34'/>\
+    <line x1='-34' y1='0' x2='34' y2='0'/>\
+    <line x1='-24' y1='-24' x2='24' y2='24'/>\
+    <line x1='-24' y1='24' x2='24' y2='-24'/>\
+  </g>\
+</g>\
+<!-- Whole lemon mid -->\
+<g transform='translate(190,180) rotate(20)'>\
+  <ellipse cx='0' cy='0' rx='48' ry='38' fill='%23FFD93D' stroke='%23E5A800' stroke-width='3'/>\
+  <ellipse cx='-22' cy='-12' rx='10' ry='5' fill='%23FFF5C2' opacity='0.7'/>\
+  <path d='M -48 0 Q -55 -5 -58 -2' stroke='%23E5A800' stroke-width='3' fill='none' stroke-linecap='round'/>\
+  <path d='M 48 0 Q 55 -5 58 -2' stroke='%23E5A800' stroke-width='3' fill='none' stroke-linecap='round'/>\
+  <path d='M 40 -25 Q 50 -38 65 -30' stroke='%236FB04A' stroke-width='3' fill='%2380C055' stroke-linejoin='round'/>\
+</g>\
+<!-- Slice bottom left -->\
+<g transform='translate(50,280) rotate(35)'>\
+  <circle cx='0' cy='0' r='50' fill='%23FFEB7A' stroke='%23F6BE00' stroke-width='3'/>\
+  <circle cx='0' cy='0' r='38' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
+  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
+    <line x1='0' y1='-36' x2='0' y2='36'/>\
+    <line x1='-36' y1='0' x2='36' y2='0'/>\
+    <line x1='-25' y1='-25' x2='25' y2='25'/>\
+    <line x1='-25' y1='25' x2='25' y2='-25'/>\
+  </g>\
+  <ellipse cx='14' cy='-14' rx='5' ry='9' fill='%23FFD93D' transform='rotate(45 14 -14)'/>\
+  <ellipse cx='-14' cy='-14' rx='5' ry='9' fill='%23FFD93D' transform='rotate(-45 -14 -14)'/>\
+</g>\
+<!-- Slice bottom right -->\
+<g transform='translate(310,310) rotate(-10)'>\
+  <circle cx='0' cy='0' r='52' fill='%23FFE25B' stroke='%23F6BE00' stroke-width='3'/>\
+  <circle cx='0' cy='0' r='40' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
+  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
+    <line x1='0' y1='-38' x2='0' y2='38'/>\
+    <line x1='-38' y1='0' x2='38' y2='0'/>\
+    <line x1='-27' y1='-27' x2='27' y2='27'/>\
+    <line x1='-27' y1='27' x2='27' y2='-27'/>\
+  </g>\
+</g>\
+</g>\
+</svg>");
+    background-size: 360px 360px;
+    background-repeat: repeat;
     opacity: 0.55;
-    z-index: 0;
-    pointer-events: none;
   }
-  body::before {
-    width: 500px; height: 500px;
-    background: linear-gradient(135deg, #ffafd6, #b9a7ff);
-    top: -180px; left: -180px;
-    animation: float1 12s ease-in-out infinite;
+  /* Soft yellow gradient overlay for readability */
+  .bg-overlay {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(ellipse at top, rgba(255,251,234,0.4) 0%, rgba(255,251,234,0.85) 100%);
   }
-  body::after {
-    width: 600px; height: 600px;
-    background: linear-gradient(135deg, #a6e3ff, #ffd3a3);
-    bottom: -250px; right: -200px;
-    animation: float2 14s ease-in-out infinite;
-  }
-  @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,60px)} }
-  @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-50px,-40px)} }
 
   .wrap {
     position: relative; z-index: 1;
@@ -51,327 +111,503 @@
     padding: 24px 18px 60px;
   }
 
-  /* Header */
+  /* === Header / brand === */
   header.brand {
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 18px;
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: white;
     border-radius: 22px;
-    box-shadow: 0 8px 28px rgba(143,118,200,0.12);
+    border: 3px solid var(--ink);
+    box-shadow: 5px 5px 0 var(--ink);
     margin-bottom: 22px;
-    border: 1px solid rgba(255,255,255,0.7);
   }
   .logo {
-    display: flex; align-items: center; gap: 10px;
-    font-weight: 800; font-size: 22px;
-    background: linear-gradient(135deg, #ff6bb5 0%, #6d8bff 50%, #b86bff 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo .lemon-mark {
+    width: 44px; height: 44px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .logo .lemon-mark svg { width: 100%; height: 100%; }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: 22px;
+    color: var(--ink);
     letter-spacing: -0.5px;
+    line-height: 1;
   }
-  .logo .dot {
-    width: 36px; height: 36px; border-radius: 12px;
-    background: linear-gradient(135deg, #ff8fc8, #7b9bff);
-    display: grid; place-items: center;
-    box-shadow: 0 6px 18px rgba(255,107,181,0.35);
-  }
-  .logo .dot svg { width: 22px; height: 22px; }
-  .logo small {
-    display: block; font-size: 11px; font-weight: 600;
-    color: #888; -webkit-text-fill-color: #888;
-    letter-spacing: 0.5px; margin-top: -2px;
+  .logo-text small {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-size: 14px; font-weight: 700;
+    color: var(--lemon-deep);
+    margin-top: 2px; letter-spacing: 0.3px;
   }
   .pill {
-    font-size: 12px; padding: 6px 12px; border-radius: 999px;
-    background: linear-gradient(135deg, #fff0f7, #f0ecff);
-    color: #6c5ce7; font-weight: 600;
-    border: 1px solid rgba(108,92,231,0.15);
+    font-family: 'Caveat', cursive;
+    font-size: 18px; padding: 6px 14px; border-radius: 999px;
+    background: var(--lemon);
+    color: var(--ink); font-weight: 700;
+    border: 2.5px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
   }
 
-  /* Cards */
+  /* === Cards (notebook style) === */
   .card {
-    background: rgba(255,255,255,0.78);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 28px;
+    background: white;
+    border: 3px solid var(--ink);
+    border-radius: 26px;
     padding: 32px 26px;
-    box-shadow: 0 18px 60px rgba(135,99,210,0.14), 0 2px 8px rgba(0,0,0,0.04);
-    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 6px 6px 0 var(--ink);
+    position: relative;
+  }
+  /* Notebook ring punches at top */
+  .card.notebook::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: 30px; right: 30px;
+    height: 14px;
+    background-image: radial-gradient(circle, var(--cream) 5px, transparent 6px);
+    background-size: 28px 14px;
+    background-repeat: repeat-x;
+    background-position: center;
   }
 
-  /* Start screen */
-  .start-hero { text-align: center; padding: 14px 0 22px; }
-  .start-hero .emoji { font-size: 56px; line-height: 1; }
+  /* === Start screen === */
+  .notebook-badge {
+    display: inline-block; padding: 8px 22px;
+    background: var(--lemon);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 16px; letter-spacing: 3px;
+    margin: 0 auto 20px;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .start-hero { text-align: center; padding: 18px 0 22px; }
+  .start-hero .lemon-big {
+    font-size: 64px; line-height: 1;
+    display: inline-block;
+    animation: wobble 3s ease-in-out infinite;
+  }
+  @keyframes wobble { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
   .start-hero h1 {
-    font-size: 30px; font-weight: 800; margin-top: 10px;
-    background: linear-gradient(135deg, #ff6bb5, #6d8bff);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    letter-spacing: -0.8px;
+    font-family: 'Fraunces', serif;
+    font-size: 34px; font-weight: 900;
+    margin-top: 6px;
+    color: var(--ink);
+    letter-spacing: -1px;
   }
-  .start-hero p { color: #6b7088; margin-top: 8px; font-size: 15px; }
+  .start-hero h1 .underline-wave {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'><path d='M0,7 Q25,0 50,5 T100,5' stroke='%23FFD93D' stroke-width='6' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 10px;
+    padding-bottom: 4px;
+  }
+  .start-hero p {
+    color: var(--ink-soft); margin-top: 12px;
+    font-family: 'Caveat', cursive;
+    font-size: 19px; font-weight: 500;
+  }
 
-  .opt-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 22px 0 8px; }
+  .opt-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0 8px; }
   .opt-row button.opt {
-    padding: 16px 14px; border-radius: 18px;
-    border: 2px solid transparent;
-    background: rgba(255,255,255,0.7);
-    font-family: inherit; font-weight: 700; font-size: 16px;
-    color: #4a4a6a; cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 14px rgba(135,99,210,0.06);
+    padding: 16px 12px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 800; font-size: 17px;
+    color: var(--ink); cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 3px 3px 0 var(--ink);
   }
   .opt-row button.opt small {
-    display: block; font-weight: 500; font-size: 12px; color: #8a8aa8; margin-top: 2px;
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-weight: 700; font-size: 14px;
+    color: var(--ink-soft); margin-top: 2px;
   }
+  .opt-row button.opt:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
   .opt-row button.opt.active {
-    border-color: #ff8fc8;
-    background: linear-gradient(135deg, #fff5fa, #f0f4ff);
-    color: #c93b8e;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(255,143,200,0.25);
+    background: var(--lemon);
+    transform: translate(1px,1px);
+    box-shadow: 2px 2px 0 var(--ink);
   }
-  .opt-row button.opt:hover { transform: translateY(-2px); }
+  .opt-row button.opt.active small { color: var(--ink); }
 
   .btn-primary {
     display: block; width: 100%; padding: 18px;
-    border: none; border-radius: 18px;
-    background: linear-gradient(135deg, #ff6bb5 0%, #7b6bff 100%);
-    color: white; font-family: inherit; font-weight: 700; font-size: 17px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--lemon);
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: 19px;
     cursor: pointer; margin-top: 18px;
-    box-shadow: 0 12px 28px rgba(123,107,255,0.35);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
     letter-spacing: -0.3px;
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(123,107,255,0.45); }
-  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+  .btn-primary:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
   .btn-ghost {
     display: block; width: 100%; padding: 14px;
-    border: 2px solid #e6e0ff; border-radius: 16px;
-    background: rgba(255,255,255,0.6);
-    color: #6d5cc9; font-family: inherit; font-weight: 700; font-size: 15px;
+    border: 3px solid var(--ink); border-radius: 16px;
+    background: white;
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 700; font-size: 16px;
     cursor: pointer; margin-top: 10px;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: all 0.12s ease;
   }
+  .btn-ghost:hover { background: var(--lemon-soft); transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
 
-  /* Quiz */
+  /* === Quiz === */
   .quiz-top {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
   }
   .progress {
-    flex: 1; height: 10px; background: rgba(255,255,255,0.7);
+    flex: 1; height: 14px; background: white;
+    border: 3px solid var(--ink);
     border-radius: 999px; overflow: hidden; margin-right: 14px;
-    border: 1px solid rgba(255,255,255,0.8);
   }
   .progress > div {
     height: 100%; width: 0;
-    background: linear-gradient(90deg, #ff8fc8, #7b9bff);
-    border-radius: 999px;
+    background: var(--lemon);
     transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .counter { font-weight: 700; color: #6d5cc9; font-size: 14px; white-space: nowrap; }
+  .counter {
+    font-family: 'Fraunces', serif;
+    font-weight: 900; color: var(--ink);
+    font-size: 16px; white-space: nowrap;
+    background: var(--lemon);
+    padding: 4px 12px;
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
 
   .qmeta {
-    display: inline-block; padding: 5px 12px;
-    border-radius: 999px; font-size: 12px; font-weight: 700;
+    display: inline-block; padding: 5px 14px;
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    font-family: 'Fraunces', serif;
+    font-size: 13px; font-weight: 800;
     margin-bottom: 14px;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
+    box-shadow: 2px 2px 0 var(--ink);
   }
-  .qmeta.en { background: linear-gradient(135deg, #e0f2ff, #f0ecff); color: #4a6fd1; }
-  .qmeta.ko { background: linear-gradient(135deg, #fff0f7, #ffe9d6); color: #d16fa1; }
+  .qmeta.en { background: #FFE25B; color: var(--ink); }
+  .qmeta.ko { background: #FFF1A8; color: var(--ink); }
 
   .qword {
-    font-size: 38px; font-weight: 800; line-height: 1.2;
-    margin-bottom: 6px; letter-spacing: -1px;
-    color: #2b2b3a;
+    font-family: 'Fraunces', serif;
+    font-size: 42px; font-weight: 900; line-height: 1.15;
+    margin-bottom: 8px; letter-spacing: -1.2px;
+    color: var(--ink);
     word-break: keep-all;
   }
-  .qhint { color: #8a8aa8; font-size: 13px; margin-bottom: 22px; }
+  .qhint {
+    color: var(--ink-soft);
+    font-family: 'Caveat', cursive;
+    font-size: 18px; font-weight: 600;
+    margin-bottom: 22px;
+  }
 
-  .choices { display: grid; gap: 10px; }
+  .choices { display: grid; gap: 12px; }
   .choice {
-    text-align: left; padding: 16px 18px; border-radius: 16px;
-    border: 2px solid rgba(230, 224, 255, 0.6);
-    background: rgba(255,255,255,0.7);
-    font-family: inherit; font-size: 15px; font-weight: 600;
-    color: #3a3a52; cursor: pointer;
-    transition: all 0.15s ease;
+    text-align: left; padding: 16px 18px;
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    background: white;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--ink); cursor: pointer;
+    transition: all 0.12s ease;
     display: flex; align-items: center; gap: 12px;
     word-break: keep-all;
+    box-shadow: 3px 3px 0 var(--ink);
   }
   .choice .badge {
-    width: 28px; height: 28px; border-radius: 8px;
-    background: linear-gradient(135deg, #f0ecff, #fff0f7);
-    color: #6d5cc9; font-weight: 800; font-size: 13px;
+    width: 30px; height: 30px; border-radius: 999px;
+    background: var(--lemon);
+    border: 2.5px solid var(--ink);
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: 14px;
     display: grid; place-items: center; flex-shrink: 0;
   }
   .choice:hover:not(:disabled) {
-    transform: translateY(-2px);
-    border-color: #b9a7ff;
-    box-shadow: 0 6px 18px rgba(123,107,255,0.15);
+    transform: translate(-1px,-1px);
+    box-shadow: 4px 4px 0 var(--ink);
+    background: var(--lemon-soft);
   }
   .choice.correct {
-    background: linear-gradient(135deg, #d4f7e0, #c5f0d0);
-    border-color: #4dbd7f; color: #1d6e3f;
+    background: #C7EFB0;
+    border-color: var(--ink);
   }
-  .choice.correct .badge { background: #4dbd7f; color: white; }
+  .choice.correct .badge { background: var(--leaf); color: white; }
   .choice.wrong {
-    background: linear-gradient(135deg, #ffe0e8, #ffd0d8);
-    border-color: #e85a73; color: #a01c33;
+    background: #FFC7C7;
+    border-color: var(--ink);
   }
-  .choice.wrong .badge { background: #e85a73; color: white; }
+  .choice.wrong .badge { background: #E85A5A; color: white; }
   .choice:disabled { cursor: default; }
 
   .feedback {
-    margin-top: 16px; padding: 14px 16px; border-radius: 14px;
-    font-size: 14px; font-weight: 600;
+    margin-top: 16px; padding: 14px 16px;
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px; font-weight: 800;
     display: none;
+    box-shadow: 3px 3px 0 var(--ink);
   }
-  .feedback.show { display: block; animation: slideIn 0.3s ease; }
-  .feedback.ok { background: linear-gradient(135deg, #e8fbef, #d6f6e0); color: #1d6e3f; }
-  .feedback.no { background: linear-gradient(135deg, #fff0f3, #ffe0e8); color: #a01c33; }
-  @keyframes slideIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .feedback.show { display: block; animation: pop 0.3s ease; }
+  .feedback.ok { background: #C7EFB0; color: #2d5a16; }
+  .feedback.no { background: #FFC7C7; color: #8a1a1a; }
+  @keyframes pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
 
-  /* Result */
+  /* === Result === */
   .result-hero { text-align: center; padding: 8px 0 18px; }
-  .result-hero .big-emoji { font-size: 64px; }
+  .result-hero .big-emoji {
+    font-size: 72px;
+    animation: wobble 2.5s ease-in-out infinite;
+    display: inline-block;
+  }
   .result-hero h2 {
-    font-size: 26px; margin-top: 8px; letter-spacing: -0.6px;
-    background: linear-gradient(135deg, #ff6bb5, #6d8bff);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-family: 'Fraunces', serif;
+    font-size: 30px; font-weight: 900;
+    margin-top: 8px; letter-spacing: -0.8px;
+    color: var(--ink);
   }
   .result-score {
-    margin: 14px auto 8px;
-    font-size: 56px; font-weight: 800;
-    background: linear-gradient(135deg, #ff8fc8, #7b9bff);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin: 18px auto 8px;
+    font-family: 'Fraunces', serif;
+    font-size: 76px; font-weight: 900;
+    color: var(--ink);
     line-height: 1;
+    display: inline-block;
+    position: relative;
   }
-  .result-sub { color: #6b7088; font-weight: 600; }
+  .result-score::after {
+    content: '';
+    position: absolute; left: -8px; right: -8px;
+    bottom: 4px; height: 16px;
+    background: var(--lemon);
+    z-index: -1;
+    border-radius: 8px;
+  }
+  .result-sub {
+    color: var(--ink-soft);
+    font-family: 'Caveat', cursive;
+    font-size: 20px; font-weight: 700;
+  }
 
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 22px 0; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 26px 0; }
   .stat {
-    background: rgba(255,255,255,0.65);
-    padding: 14px 10px; border-radius: 16px; text-align: center;
-    border: 1px solid rgba(255,255,255,0.8);
+    background: white;
+    padding: 14px 8px; border-radius: 16px; text-align: center;
+    border: 3px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
   }
-  .stat .num { font-size: 22px; font-weight: 800; color: #4a4a6a; }
-  .stat .lbl { font-size: 11px; color: #8a8aa8; font-weight: 600; margin-top: 2px; letter-spacing: 0.3px; }
-  .stat.ok .num { color: #4dbd7f; }
-  .stat.no .num { color: #e85a73; }
+  .stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 26px; font-weight: 900;
+    color: var(--ink);
+  }
+  .stat .lbl {
+    font-family: 'Caveat', cursive;
+    font-size: 16px; font-weight: 700;
+    color: var(--ink-soft); margin-top: 2px;
+  }
+  .stat.ok { background: #C7EFB0; }
+  .stat.no { background: #FFC7C7; }
 
   .wrong-section h3 {
-    font-size: 15px; font-weight: 700; color: #4a4a6a; margin-bottom: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 800;
+    color: var(--ink); margin-bottom: 12px;
     display: flex; align-items: center; gap: 6px;
   }
   .wrong-list {
-    background: rgba(255,255,255,0.6);
-    border: 1px dashed #e0d5ff;
+    background: var(--cream);
+    border: 3px dashed var(--ink);
     border-radius: 16px; padding: 14px;
     max-height: 280px; overflow-y: auto;
-    font-size: 14px;
+    font-size: 15px;
   }
   .wrong-list .item {
-    padding: 8px 0; border-bottom: 1px solid rgba(108,92,231,0.08);
+    padding: 10px 0; border-bottom: 2px dashed rgba(0,0,0,0.12);
   }
   .wrong-list .item:last-child { border-bottom: none; }
-  .wrong-list .en { font-weight: 700; color: #2b2b3a; }
-  .wrong-list .ko { color: #6b7088; font-weight: 500; }
-  .wrong-list .mine { color: #e85a73; font-size: 12px; margin-top: 2px; }
+  .wrong-list .en {
+    font-family: 'Fraunces', serif;
+    font-weight: 800; color: var(--ink);
+  }
+  .wrong-list .ko { color: var(--ink-soft); font-weight: 500; }
+  .wrong-list .mine {
+    color: #c44747;
+    font-family: 'Caveat', cursive;
+    font-size: 15px; font-weight: 700; margin-top: 2px;
+  }
 
   .perfect {
-    background: linear-gradient(135deg, #fff8dc, #ffe9d6);
-    padding: 18px; border-radius: 16px;
-    text-align: center; font-weight: 700; color: #b87a2b;
+    background: var(--lemon);
+    border: 3px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 20px; border-radius: 16px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 900; color: var(--ink);
+    font-size: 17px;
   }
 
   .copy-btn {
-    margin-top: 12px; width: 100%; padding: 16px;
-    background: linear-gradient(135deg, #ffe600 0%, #ffd400 100%);
-    border: none; border-radius: 16px;
-    color: #3a1d00; font-family: inherit; font-weight: 800; font-size: 15px;
+    margin-top: 14px; width: 100%; padding: 16px;
+    background: #FAE100;
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: 16px;
     cursor: pointer;
-    box-shadow: 0 8px 22px rgba(255,200,0,0.4);
+    box-shadow: 4px 4px 0 var(--ink);
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    transition: transform 0.15s ease;
+    transition: all 0.12s ease;
   }
-  .copy-btn:hover { transform: translateY(-2px); }
-  .copy-btn.copied {
-    background: linear-gradient(135deg, #b3f5c5, #8be8a3);
-    color: #1d6e3f;
-  }
+  .copy-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+  .copy-btn:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
+  .copy-btn.copied { background: #C7EFB0; }
   .kakao-icon { width: 22px; height: 22px; }
 
   .restart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
   .restart-row button {
-    padding: 14px; border-radius: 14px;
-    font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer;
-    border: 2px solid #e6e0ff; background: rgba(255,255,255,0.6); color: #6d5cc9;
+    padding: 14px;
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    font-family: 'Fraunces', serif;
+    font-weight: 800; font-size: 15px; cursor: pointer;
+    background: white; color: var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: all 0.12s ease;
   }
+  .restart-row button:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
   .restart-row button.primary {
-    background: linear-gradient(135deg, #ff6bb5, #7b6bff);
-    color: white; border-color: transparent;
-    box-shadow: 0 8px 18px rgba(123,107,255,0.3);
+    background: var(--lemon);
   }
 
   footer.foot {
-    text-align: center; color: #8a8aa8;
-    font-size: 12px; margin-top: 24px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-family: 'Caveat', cursive;
+    font-size: 17px; font-weight: 700;
+    margin-top: 24px;
   }
-  footer.foot b { color: #6d5cc9; }
+  footer.foot b { color: var(--ink); }
+
+  /* === Lookup === */
+  #searchBox {
+    width: 100%; padding: 14px 16px;
+    border-radius: 14px;
+    border: 3px solid var(--ink);
+    background: white;
+    font-family: inherit; font-size: 15px;
+    margin-bottom: 14px; outline: none;
+    box-shadow: 3px 3px 0 var(--ink);
+    font-weight: 600;
+  }
+  #searchBox:focus { background: var(--cream); }
+  .vocab-item {
+    padding: 12px 14px; border-radius: 12px;
+    margin-bottom: 8px;
+    background: white;
+    border: 2.5px solid var(--ink);
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  .vocab-item .v-en {
+    font-family: 'Fraunces', serif;
+    font-weight: 800; color: var(--ink);
+  }
+  .vocab-item .v-ko {
+    color: var(--ink-soft); font-size: 14px; text-align: right;
+    font-weight: 500;
+  }
 
   @media (max-width: 480px) {
-    .qword { font-size: 30px; }
-    .start-hero h1 { font-size: 24px; }
-    .result-score { font-size: 44px; }
-    .card { padding: 24px 20px; border-radius: 22px; }
-    .logo { font-size: 18px; }
+    .qword { font-size: 32px; }
+    .start-hero h1 { font-size: 26px; }
+    .result-score { font-size: 56px; }
+    .card { padding: 26px 20px; border-radius: 22px; }
+    .logo-text { font-size: 18px; }
+    .logo .lemon-mark { width: 38px; height: 38px; }
   }
 </style>
 </head>
 <body>
+<div class="bg-pattern"></div>
+<div class="bg-overlay"></div>
 <div class="wrap">
 
   <header class="brand">
     <div class="logo">
-      <div class="dot">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      <div class="lemon-mark">
+        <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="25" cy="25" r="22" fill="#FFEB7A" stroke="#2b2b2b" stroke-width="2.5"/>
+          <circle cx="25" cy="25" r="16" fill="#FFF5C2" stroke="#2b2b2b" stroke-width="2"/>
+          <g stroke="#2b2b2b" stroke-width="1.8" fill="none">
+            <line x1="25" y1="10" x2="25" y2="40"/>
+            <line x1="10" y1="25" x2="40" y2="25"/>
+            <line x1="14" y1="14" x2="36" y2="36"/>
+            <line x1="14" y1="36" x2="36" y2="14"/>
+          </g>
+          <ellipse cx="32" cy="18" rx="2.5" ry="5" fill="#FFD93D" transform="rotate(45 32 18)"/>
+          <ellipse cx="18" cy="18" rx="2.5" ry="5" fill="#FFD93D" transform="rotate(-45 18 18)"/>
+          <ellipse cx="32" cy="32" rx="2.5" ry="5" fill="#FFD93D" transform="rotate(-45 32 32)"/>
+          <ellipse cx="18" cy="32" rx="2.5" ry="5" fill="#FFD93D" transform="rotate(45 18 32)"/>
         </svg>
       </div>
-      <div>
+      <div class="logo-text">
         EngFit 영핏
-        <small>WEEK 4 · VOCAB TEST</small>
+        <small>~ vocab notebook ~</small>
       </div>
     </div>
-    <span class="pill">지나 티처 ✿</span>
+    <span class="pill">지나 티처 🍋</span>
   </header>
 
   <!-- START SCREEN -->
-  <section id="start" class="card">
+  <section id="start" class="card notebook">
     <div class="start-hero">
-      <div class="emoji">📚✨</div>
-      <h1>오늘의 단어 테스트</h1>
-      <p>문항 수를 골라 시작해 보세요. 영↔한 섞어서 출제돼요.</p>
+      <div style="margin-bottom:8px"><span class="notebook-badge">NOTEBOOK</span></div>
+      <div class="lemon-big">🍋</div>
+      <h1><span class="underline-wave">Week 4 단어</span> 테스트</h1>
+      <p>새콤달콤 오늘의 단어 한 입! 영↔한 섞어서 출제돼요.</p>
     </div>
     <div class="opt-row" id="optRow">
-      <button class="opt" data-count="10">10문항<small>워밍업</small></button>
-      <button class="opt active" data-count="20">20문항<small>기본</small></button>
-      <button class="opt" data-count="30">30문항<small>도전</small></button>
-      <button class="opt" data-count="all">전체<small>마스터</small></button>
+      <button class="opt" data-count="10">10문항<small>가벼운 한 잔</small></button>
+      <button class="opt active" data-count="20">20문항<small>기본 레몬</small></button>
+      <button class="opt" data-count="30">30문항<small>레몬 더블샷</small></button>
+      <button class="opt" data-count="all">전체<small>풀 스퀴즈 🏆</small></button>
     </div>
-    <button class="btn-primary" id="startBtn">시작하기 →</button>
-    <button class="btn-ghost" id="lookupBtn">단어장 보기 📖</button>
+    <button class="btn-primary" id="startBtn">시작하기 🍋</button>
+    <button class="btn-ghost" id="lookupBtn">단어장 펼쳐보기 📖</button>
   </section>
 
   <!-- LOOKUP SCREEN -->
   <section id="lookup" class="card" style="display:none">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <h2 style="font-size:20px;color:#4a4a6a">📖 단어장</h2>
-      <button class="pill" id="backFromLookup" style="cursor:pointer;border:none">← 돌아가기</button>
+      <h2 style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--ink)">📖 단어장</h2>
+      <button class="pill" id="backFromLookup" style="cursor:pointer;font-family:'Caveat',cursive">← back</button>
     </div>
-    <input id="searchBox" placeholder="🔍 영어/한글 검색..." style="width:100%;padding:14px 16px;border-radius:14px;border:2px solid #e6e0ff;background:rgba(255,255,255,0.7);font-family:inherit;font-size:15px;margin-bottom:14px;outline:none">
+    <input id="searchBox" placeholder="🔍 영어 / 한글 검색...">
     <div id="vocabList" style="max-height:60vh;overflow-y:auto;padding-right:6px"></div>
   </section>
 
@@ -390,11 +626,11 @@
   </section>
 
   <!-- RESULT SCREEN -->
-  <section id="result" class="card" style="display:none">
+  <section id="result" class="card notebook" style="display:none">
     <div class="result-hero">
-      <div class="big-emoji" id="rEmoji">🎉</div>
+      <div class="big-emoji" id="rEmoji">🍋</div>
       <h2 id="rTitle">테스트 완료!</h2>
-      <div class="result-score"><span id="rScore">0</span>점</div>
+      <div><span class="result-score"><span id="rScore">0</span>점</span></div>
       <div class="result-sub" id="rSub">잘 했어요!</div>
     </div>
     <div class="stats">
@@ -406,18 +642,18 @@
       <h3>📝 틀린 단어</h3>
       <div id="wrongBox"></div>
       <button class="copy-btn" id="copyBtn">
-        <svg class="kakao-icon" viewBox="0 0 24 24" fill="#3a1d00"><path d="M12 3C6.5 3 2 6.5 2 10.7c0 2.7 1.8 5 4.5 6.3L5.4 21l4.3-2.5c.7.1 1.5.2 2.3.2 5.5 0 10-3.5 10-7.7S17.5 3 12 3z"/></svg>
+        <svg class="kakao-icon" viewBox="0 0 24 24" fill="#2b2b2b"><path d="M12 3C6.5 3 2 6.5 2 10.7c0 2.7 1.8 5 4.5 6.3L5.4 21l4.3-2.5c.7.1 1.5.2 2.3.2 5.5 0 10-3.5 10-7.7S17.5 3 12 3z"/></svg>
         지나 티처에게 보낼 메시지 복사하기
       </button>
     </div>
     <div class="restart-row">
-      <button id="reviewBtn">틀린 단어 다시</button>
-      <button class="primary" id="restartBtn">처음으로</button>
+      <button id="reviewBtn">틀린 단어 다시 ✏️</button>
+      <button class="primary" id="restartBtn">처음으로 🍋</button>
     </div>
   </section>
 
   <footer class="foot">
-    Made with 💜 by <b>EngFit 영핏</b> · 지나 티처
+    Made with 🍋 by <b>EngFit 영핏</b> · 지나 티처
   </footer>
 </div>
 
@@ -612,37 +848,22 @@ const sample = (arr, n, exclude) => {
   return shuffle([...pool]).slice(0, n);
 };
 
-/* ============ STATE ============ */
-let state = {
-  questions: [],
-  current: 0,
-  wrong: [],
-  answered: false,
-};
+let state = { questions: [], current: 0, wrong: [], answered: false };
 let selectedCount = 20;
 
-/* ============ BUILDERS ============ */
 function buildQuestions(count) {
   const pool = shuffle([...VOCAB]).slice(0, count === 'all' ? VOCAB.length : count);
-  return pool.map(([en, ko], i) => {
+  return pool.map(([en, ko]) => {
     const direction = Math.random() < 0.5 ? 'en2ko' : 'ko2en';
     const distractors = sample(VOCAB, 3, [en, ko])
       .map(([e, k]) => direction === 'en2ko' ? k : e);
     const correct = direction === 'en2ko' ? ko : en;
     const choices = shuffle([correct, ...distractors]);
-    return {
-      direction,
-      en, ko,
-      prompt: direction === 'en2ko' ? en : ko,
-      correct,
-      choices,
-    };
+    return { direction, en, ko, prompt: direction === 'en2ko' ? en : ko, correct, choices };
   });
 }
 
-/* ============ RENDER ============ */
 const $ = (id) => document.getElementById(id);
-
 function show(screen) {
   ['start','quiz','result','lookup'].forEach(s => $(s).style.display = s === screen ? '' : 'none');
   window.scrollTo({top:0, behavior:'smooth'});
@@ -661,192 +882,3 @@ function renderQuestion() {
   const labels = ['①','②','③','④'];
   q.choices.forEach((c, i) => {
     const btn = document.createElement('button');
-    btn.className = 'choice';
-    btn.innerHTML = `<span class="badge">${labels[i]}</span><span>${c}</span>`;
-    btn.onclick = () => handleAnswer(btn, c, q);
-    choicesEl.appendChild(btn);
-  });
-  $('feedback').className = 'feedback';
-  $('feedback').textContent = '';
-  $('nextBtn').style.display = 'none';
-  state.answered = false;
-}
-
-function handleAnswer(btn, choice, q) {
-  if (state.answered) return;
-  state.answered = true;
-  const isCorrect = choice === q.correct;
-  const allBtns = $('choices').querySelectorAll('.choice');
-  allBtns.forEach(b => {
-    b.disabled = true;
-    const txt = b.querySelector('span:last-child').textContent;
-    if (txt === q.correct) b.classList.add('correct');
-    else if (b === btn) b.classList.add('wrong');
-  });
-  const fb = $('feedback');
-  if (isCorrect) {
-    fb.className = 'feedback show ok';
-    fb.textContent = '✨ 정답이에요!';
-  } else {
-    fb.className = 'feedback show no';
-    fb.textContent = `❌ 정답: ${q.correct}`;
-    state.wrong.push({ ...q, mine: choice });
-  }
-  $('nextBtn').style.display = 'block';
-  $('nextBtn').textContent = state.current === state.questions.length - 1 ? '결과 보기 →' : '다음 →';
-}
-
-function nextQuestion() {
-  state.current++;
-  if (state.current >= state.questions.length) {
-    showResult();
-  } else {
-    renderQuestion();
-  }
-}
-
-function showResult() {
-  const total = state.questions.length;
-  const ok = total - state.wrong.length;
-  const pct = Math.round((ok/total)*100);
-  $('rScore').textContent = pct;
-  $('sTotal').textContent = total;
-  $('sOk').textContent = ok;
-  $('sNo').textContent = state.wrong.length;
-
-  let emoji = '🎉', title = '완벽해요!', sub = '모든 단어를 맞혔어요!';
-  if (pct < 100 && pct >= 80) { emoji = '🌟'; title = '잘 했어요!'; sub = '거의 다 맞혔어요!'; }
-  else if (pct >= 60) { emoji = '💪'; title = '괜찮아요!'; sub = '조금만 더 복습해 봐요!'; }
-  else if (pct >= 40) { emoji = '📖'; title = '복습이 필요해요'; sub = '틀린 단어 꼭 보고 가요!'; }
-  else { emoji = '🌱'; title = '다시 도전!'; sub = '단어장을 보며 천천히 익혀봐요!'; }
-  $('rEmoji').textContent = emoji;
-  $('rTitle').textContent = title;
-  $('rSub').textContent = sub;
-
-  const wrongBox = $('wrongBox');
-  if (state.wrong.length === 0) {
-    wrongBox.innerHTML = '<div class="perfect">🏆 100점! 틀린 단어가 없어요!</div>';
-    $('copyBtn').style.display = 'none';
-  } else {
-    let html = '<div class="wrong-list">';
-    state.wrong.forEach(w => {
-      html += `<div class="item">
-        <span class="en">${w.en}</span> <span class="ko">— ${w.ko}</span>
-        <div class="mine">내 답: ${w.mine}</div>
-      </div>`;
-    });
-    html += '</div>';
-    wrongBox.innerHTML = html;
-    $('copyBtn').style.display = '';
-  }
-  show('result');
-}
-
-function buildKakaoMessage() {
-  const date = new Date();
-  const y = date.getFullYear(), m = date.getMonth()+1, d = date.getDate();
-  let msg = `📚 EngFit 영핏 단어 테스트 결과\n`;
-  msg += `📅 ${y}.${String(m).padStart(2,'0')}.${String(d).padStart(2,'0')}\n`;
-  msg += `\n✅ ${state.questions.length}문항 중 ${state.questions.length - state.wrong.length}개 정답`;
-  msg += ` (${Math.round(((state.questions.length-state.wrong.length)/state.questions.length)*100)}점)\n`;
-  if (state.wrong.length > 0) {
-    msg += `\n❌ 틀린 단어 (${state.wrong.length}개)\n`;
-    msg += `―――――――――――\n`;
-    state.wrong.forEach((w,i) => {
-      msg += `${i+1}. ${w.en} → ${w.ko}\n   (내 답: ${w.mine})\n`;
-    });
-  } else {
-    msg += `\n🏆 모두 정답! 완벽해요!`;
-  }
-  msg += `\n지나티처 ✿`;
-  return msg;
-}
-
-function copyKakao() {
-  const msg = buildKakaoMessage();
-  const btn = $('copyBtn');
-  navigator.clipboard.writeText(msg).then(() => {
-    btn.classList.add('copied');
-    btn.innerHTML = '✅ 복사 완료! 카카오톡에 붙여넣기 하세요';
-    setTimeout(() => {
-      btn.classList.remove('copied');
-      btn.innerHTML = `<svg class="kakao-icon" viewBox="0 0 24 24" fill="#3a1d00"><path d="M12 3C6.5 3 2 6.5 2 10.7c0 2.7 1.8 5 4.5 6.3L5.4 21l4.3-2.5c.7.1 1.5.2 2.3.2 5.5 0 10-3.5 10-7.7S17.5 3 12 3z"/></svg> 지나 티처에게 보낼 메시지 복사하기`;
-    }, 2400);
-  }).catch(() => {
-    // fallback
-    const ta = document.createElement('textarea');
-    ta.value = msg; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
-    btn.classList.add('copied');
-    btn.innerHTML = '✅ 복사 완료!';
-  });
-}
-
-function renderVocabList(filter = '') {
-  const f = filter.trim().toLowerCase();
-  const list = VOCAB.filter(([en, ko]) =>
-    !f || en.toLowerCase().includes(f) || ko.toLowerCase().includes(f)
-  );
-  const el = $('vocabList');
-  if (list.length === 0) {
-    el.innerHTML = '<div style="text-align:center;color:#8a8aa8;padding:30px">검색 결과가 없어요</div>';
-    return;
-  }
-  el.innerHTML = list.map(([en, ko]) => `
-    <div style="padding:12px 14px;border-radius:12px;margin-bottom:6px;background:rgba(255,255,255,0.7);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-      <span style="font-weight:700;color:#2b2b3a">${en}</span>
-      <span style="color:#6b7088;font-size:14px;text-align:right">${ko}</span>
-    </div>
-  `).join('');
-}
-
-/* ============ EVENTS ============ */
-document.querySelectorAll('#optRow .opt').forEach(b => {
-  b.onclick = () => {
-    document.querySelectorAll('#optRow .opt').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    const c = b.dataset.count;
-    selectedCount = c === 'all' ? 'all' : parseInt(c);
-  };
-});
-$('startBtn').onclick = () => {
-  state.questions = buildQuestions(selectedCount);
-  state.current = 0;
-  state.wrong = [];
-  show('quiz');
-  renderQuestion();
-};
-$('nextBtn').onclick = nextQuestion;
-$('copyBtn').onclick = copyKakao;
-$('restartBtn').onclick = () => show('start');
-$('reviewBtn').onclick = () => {
-  if (state.wrong.length === 0) { show('start'); return; }
-  // build a new test from only wrong words
-  const wrongVocab = state.wrong.map(w => [w.en, w.ko]);
-  const newPool = shuffle([...wrongVocab]);
-  state.questions = newPool.map(([en, ko]) => {
-    const direction = Math.random() < 0.5 ? 'en2ko' : 'ko2en';
-    const distractors = sample(VOCAB, 3, [en, ko])
-      .map(([e, k]) => direction === 'en2ko' ? k : e);
-    const correct = direction === 'en2ko' ? ko : en;
-    return {
-      direction, en, ko,
-      prompt: direction === 'en2ko' ? en : ko,
-      correct,
-      choices: shuffle([correct, ...distractors])
-    };
-  });
-  state.current = 0;
-  state.wrong = [];
-  show('quiz');
-  renderQuestion();
-};
-$('lookupBtn').onclick = () => { renderVocabList(); show('lookup'); };
-$('backFromLookup').onclick = () => show('start');
-$('searchBox').oninput = (e) => renderVocabList(e.target.value);
-
-/* boot */
-show('start');
-</script>
-</body>
-</html>
