@@ -219,6 +219,11 @@
     word-break: keep-all;
   }
   .qhint { color: var(--ink-soft); font-family: 'Caveat', cursive; font-size: 18px; font-weight: 600; margin-bottom: 22px; }
+  .kbd-hint { display: none; font-family: 'Caveat', cursive; font-size: 15px; color: var(--ink-soft); margin-top: -10px; margin-bottom: 14px; }
+  .kbd-hint kbd { display: inline-block; padding: 1px 7px; background: white; border: 2px solid var(--ink); border-radius: 6px; font-family: 'Fraunces', serif; font-weight: 800; font-size: 13px; box-shadow: 1.5px 1.5px 0 var(--ink); margin: 0 2px; }
+  @media (hover: hover) and (min-width: 600px) {
+    .kbd-hint { display: block; }
+  }
   .choices { display: grid; gap: 12px; }
   .choice {
     text-align: left; padding: 16px 18px;
@@ -456,6 +461,7 @@
     <div class="qmeta" id="qmeta">영어 → 한국어</div>
     <div class="qword" id="qword">word</div>
     <div class="qhint" id="qhint">다음 단어의 뜻으로 알맞은 것은?</div>
+    <div class="kbd-hint">💡 키보드 <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> 로도 선택 가능해요</div>
     <div class="choices" id="choices"></div>
     <div class="feedback" id="feedback"></div>
   </section>
@@ -711,6 +717,25 @@ document.addEventListener('DOMContentLoaded', function() {
   $('lookupBtn').addEventListener('click', function() { renderVocabList(); show('lookup'); });
   $('backFromLookup').addEventListener('click', function() { show('start'); });
   $('searchBox').addEventListener('input', function(e) { renderVocabList(e.target.value); });
+
+  // Keyboard shortcuts: 1-4 keys select choices on the quiz screen
+  document.addEventListener('keydown', function(e) {
+    // Skip if user is typing in search box etc.
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    // Only when quiz screen is visible
+    if ($('quiz').style.display === 'none') return;
+    if (state.answered) return;
+    const key = e.key;
+    const idx = ['1','2','3','4'].indexOf(key);
+    if (idx === -1) return;
+    const buttons = $('choices').querySelectorAll('.choice');
+    if (buttons[idx]) {
+      e.preventDefault();
+      buttons[idx].click();
+    }
+  });
+
   show('start');
 });
 </script>
