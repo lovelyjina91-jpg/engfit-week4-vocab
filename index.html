@@ -458,7 +458,6 @@
     <div class="qhint" id="qhint">다음 단어의 뜻으로 알맞은 것은?</div>
     <div class="choices" id="choices"></div>
     <div class="feedback" id="feedback"></div>
-    <button class="btn-primary" id="nextBtn" style="display:none">다음</button>
   </section>
 
   <section id="result" class="card notebook" style="display:none">
@@ -546,7 +545,6 @@ function renderQuestion() {
   });
   $('feedback').className = 'feedback';
   $('feedback').textContent = '';
-  $('nextBtn').style.display = 'none';
   state.answered = false;
 }
 
@@ -570,8 +568,8 @@ function handleAnswer(btn, choice, q) {
     fb.textContent = '❌ 정답: ' + q.correct;
     state.wrong.push(Object.assign({}, q, { mine: choice }));
   }
-  $('nextBtn').style.display = 'block';
-  $('nextBtn').textContent = state.current === state.questions.length - 1 ? '결과 보기 🍋' : '다음';
+  // Auto-advance after 0.5s (longer if wrong so user can see the answer)
+  setTimeout(nextQuestion, isCorrect ? 500 : 1200);
 }
 
 function nextQuestion() {
@@ -693,7 +691,6 @@ document.addEventListener('DOMContentLoaded', function() {
     state.current = 0; state.wrong = [];
     show('quiz'); renderQuestion();
   });
-  $('nextBtn').addEventListener('click', nextQuestion);
   $('copyBtn').addEventListener('click', copyKakao);
   $('restartBtn').addEventListener('click', function() { show('start'); });
   $('reviewBtn').addEventListener('click', function() {
