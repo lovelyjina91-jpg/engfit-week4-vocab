@@ -11,6 +11,7 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body { height: 100%; }
+  button { touch-action: manipulation; }
   :root {
     --lemon: #FFD93D;
     --lemon-deep: #F6BE00;
@@ -30,78 +31,18 @@
   }
 
   /* === Lemon background pattern === */
-  .bg-pattern {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background-color: #FFFBEA;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'>\
-<g opacity='0.85'>\
-<!-- Big lemon slice top left -->\
-<g transform='translate(60,70) rotate(-15)'>\
-  <circle cx='0' cy='0' r='55' fill='%23FFEB7A' stroke='%23F6BE00' stroke-width='3'/>\
-  <circle cx='0' cy='0' r='42' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
-  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
-    <line x1='0' y1='-40' x2='0' y2='40'/>\
-    <line x1='-40' y1='0' x2='40' y2='0'/>\
-    <line x1='-28' y1='-28' x2='28' y2='28'/>\
-    <line x1='-28' y1='28' x2='28' y2='-28'/>\
-  </g>\
-  <ellipse cx='15' cy='-15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(45 15 -15)'/>\
-  <ellipse cx='-15' cy='-15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(-45 -15 -15)'/>\
-  <ellipse cx='15' cy='15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(-45 15 15)'/>\
-  <ellipse cx='-15' cy='15' rx='5' ry='10' fill='%23FFD93D' transform='rotate(45 -15 15)'/>\
-</g>\
-<!-- Half lemon top right -->\
-<g transform='translate(310,40) rotate(25)'>\
-  <circle cx='0' cy='0' r='48' fill='%23FFE25B' stroke='%23F6BE00' stroke-width='3'/>\
-  <circle cx='0' cy='0' r='36' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
-  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
-    <line x1='0' y1='-34' x2='0' y2='34'/>\
-    <line x1='-34' y1='0' x2='34' y2='0'/>\
-    <line x1='-24' y1='-24' x2='24' y2='24'/>\
-    <line x1='-24' y1='24' x2='24' y2='-24'/>\
-  </g>\
-</g>\
-<!-- Whole lemon mid -->\
-<g transform='translate(190,180) rotate(20)'>\
-  <ellipse cx='0' cy='0' rx='48' ry='38' fill='%23FFD93D' stroke='%23E5A800' stroke-width='3'/>\
-  <ellipse cx='-22' cy='-12' rx='10' ry='5' fill='%23FFF5C2' opacity='0.7'/>\
-  <path d='M -48 0 Q -55 -5 -58 -2' stroke='%23E5A800' stroke-width='3' fill='none' stroke-linecap='round'/>\
-  <path d='M 48 0 Q 55 -5 58 -2' stroke='%23E5A800' stroke-width='3' fill='none' stroke-linecap='round'/>\
-  <path d='M 40 -25 Q 50 -38 65 -30' stroke='%236FB04A' stroke-width='3' fill='%2380C055' stroke-linejoin='round'/>\
-</g>\
-<!-- Slice bottom left -->\
-<g transform='translate(50,280) rotate(35)'>\
-  <circle cx='0' cy='0' r='50' fill='%23FFEB7A' stroke='%23F6BE00' stroke-width='3'/>\
-  <circle cx='0' cy='0' r='38' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
-  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
-    <line x1='0' y1='-36' x2='0' y2='36'/>\
-    <line x1='-36' y1='0' x2='36' y2='0'/>\
-    <line x1='-25' y1='-25' x2='25' y2='25'/>\
-    <line x1='-25' y1='25' x2='25' y2='-25'/>\
-  </g>\
-  <ellipse cx='14' cy='-14' rx='5' ry='9' fill='%23FFD93D' transform='rotate(45 14 -14)'/>\
-  <ellipse cx='-14' cy='-14' rx='5' ry='9' fill='%23FFD93D' transform='rotate(-45 -14 -14)'/>\
-</g>\
-<!-- Slice bottom right -->\
-<g transform='translate(310,310) rotate(-10)'>\
-  <circle cx='0' cy='0' r='52' fill='%23FFE25B' stroke='%23F6BE00' stroke-width='3'/>\
-  <circle cx='0' cy='0' r='40' fill='%23FFF5C2' stroke='%23F6BE00' stroke-width='2'/>\
-  <g stroke='%23F6BE00' stroke-width='2' fill='none'>\
-    <line x1='0' y1='-38' x2='0' y2='38'/>\
-    <line x1='-38' y1='0' x2='38' y2='0'/>\
-    <line x1='-27' y1='-27' x2='27' y2='27'/>\
-    <line x1='-27' y1='27' x2='27' y2='-27'/>\
-  </g>\
-</g>\
-</g>\
-</svg>");
-    background-size: 360px 360px;
-    background-repeat: repeat;
+  .bg-svg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
     opacity: 0.55;
   }
   /* Soft yellow gradient overlay for readability */
   .bg-overlay {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0; pointer-events: none;
     background: radial-gradient(ellipse at top, rgba(255,251,234,0.4) 0%, rgba(255,251,234,0.85) 100%);
   }
 
@@ -553,7 +494,67 @@
 </style>
 </head>
 <body>
-<div class="bg-pattern"></div>
+<svg class="bg-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <pattern id="lemonPattern" x="0" y="0" width="360" height="360" patternUnits="userSpaceOnUse">
+      <rect width="360" height="360" fill="#FFFBEA"/>
+      <g transform="translate(60,70) rotate(-15)">
+        <circle cx="0" cy="0" r="55" fill="#FFEB7A" stroke="#F6BE00" stroke-width="3"/>
+        <circle cx="0" cy="0" r="42" fill="#FFF5C2" stroke="#F6BE00" stroke-width="2"/>
+        <g stroke="#F6BE00" stroke-width="2" fill="none">
+          <line x1="0" y1="-40" x2="0" y2="40"/>
+          <line x1="-40" y1="0" x2="40" y2="0"/>
+          <line x1="-28" y1="-28" x2="28" y2="28"/>
+          <line x1="-28" y1="28" x2="28" y2="-28"/>
+        </g>
+        <ellipse cx="15" cy="-15" rx="5" ry="10" fill="#FFD93D" transform="rotate(45 15 -15)"/>
+        <ellipse cx="-15" cy="-15" rx="5" ry="10" fill="#FFD93D" transform="rotate(-45 -15 -15)"/>
+        <ellipse cx="15" cy="15" rx="5" ry="10" fill="#FFD93D" transform="rotate(-45 15 15)"/>
+        <ellipse cx="-15" cy="15" rx="5" ry="10" fill="#FFD93D" transform="rotate(45 -15 15)"/>
+      </g>
+      <g transform="translate(310,40) rotate(25)">
+        <circle cx="0" cy="0" r="48" fill="#FFE25B" stroke="#F6BE00" stroke-width="3"/>
+        <circle cx="0" cy="0" r="36" fill="#FFF5C2" stroke="#F6BE00" stroke-width="2"/>
+        <g stroke="#F6BE00" stroke-width="2" fill="none">
+          <line x1="0" y1="-34" x2="0" y2="34"/>
+          <line x1="-34" y1="0" x2="34" y2="0"/>
+          <line x1="-24" y1="-24" x2="24" y2="24"/>
+          <line x1="-24" y1="24" x2="24" y2="-24"/>
+        </g>
+      </g>
+      <g transform="translate(190,180) rotate(20)">
+        <ellipse cx="0" cy="0" rx="48" ry="38" fill="#FFD93D" stroke="#E5A800" stroke-width="3"/>
+        <ellipse cx="-22" cy="-12" rx="10" ry="5" fill="#FFF5C2" opacity="0.7"/>
+        <path d="M -48 0 Q -55 -5 -58 -2" stroke="#E5A800" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M 48 0 Q 55 -5 58 -2" stroke="#E5A800" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M 40 -25 Q 50 -38 65 -30" stroke="#6FB04A" stroke-width="3" fill="#80C055" stroke-linejoin="round"/>
+      </g>
+      <g transform="translate(50,280) rotate(35)">
+        <circle cx="0" cy="0" r="50" fill="#FFEB7A" stroke="#F6BE00" stroke-width="3"/>
+        <circle cx="0" cy="0" r="38" fill="#FFF5C2" stroke="#F6BE00" stroke-width="2"/>
+        <g stroke="#F6BE00" stroke-width="2" fill="none">
+          <line x1="0" y1="-36" x2="0" y2="36"/>
+          <line x1="-36" y1="0" x2="36" y2="0"/>
+          <line x1="-25" y1="-25" x2="25" y2="25"/>
+          <line x1="-25" y1="25" x2="25" y2="-25"/>
+        </g>
+        <ellipse cx="14" cy="-14" rx="5" ry="9" fill="#FFD93D" transform="rotate(45 14 -14)"/>
+        <ellipse cx="-14" cy="-14" rx="5" ry="9" fill="#FFD93D" transform="rotate(-45 -14 -14)"/>
+      </g>
+      <g transform="translate(310,310) rotate(-10)">
+        <circle cx="0" cy="0" r="52" fill="#FFE25B" stroke="#F6BE00" stroke-width="3"/>
+        <circle cx="0" cy="0" r="40" fill="#FFF5C2" stroke="#F6BE00" stroke-width="2"/>
+        <g stroke="#F6BE00" stroke-width="2" fill="none">
+          <line x1="0" y1="-38" x2="0" y2="38"/>
+          <line x1="-38" y1="0" x2="38" y2="0"/>
+          <line x1="-27" y1="-27" x2="27" y2="27"/>
+          <line x1="-27" y1="27" x2="27" y2="-27"/>
+        </g>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#lemonPattern)"/>
+</svg>
 <div class="bg-overlay"></div>
 <div class="wrap">
 
@@ -876,9 +877,4 @@ function renderQuestion() {
   $('qmeta').textContent = q.direction === 'en2ko' ? '영어 → 한국어' : '한국어 → 영어';
   $('qmeta').className = 'qmeta ' + (q.direction === 'en2ko' ? 'en' : 'ko');
   $('qword').textContent = q.prompt;
-  $('qhint').textContent = q.direction === 'en2ko' ? '다음 영어 단어의 뜻으로 알맞은 것은?' : '다음 뜻에 해당하는 영어 단어는?';
-  const choicesEl = $('choices');
-  choicesEl.innerHTML = '';
-  const labels = ['①','②','③','④'];
-  q.choices.forEach((c, i) => {
-    const btn = document.createElement('button');
+  $('qhint').textContent = q.direction === 'en2ko' ? '다음 영어 단어의 뜻으로 �
