@@ -128,7 +128,47 @@
     font-family: 'Caveat', cursive;
     font-size: 19px; font-weight: 500;
   }
-  .opt-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0 8px; }
+  .section-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 800; font-size: 14px;
+    color: var(--ink-soft);
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; flex: 1; height: 2px;
+    background: repeating-linear-gradient(90deg, var(--ink) 0 4px, transparent 4px 8px);
+    opacity: 0.3;
+  }
+  .part-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 6px; }
+  .part-row button.part {
+    padding: 12px 6px;
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    background: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 800; font-size: 15px;
+    color: var(--ink); cursor: pointer;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: all 0.15s ease;
+  }
+  .part-row button.part small {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-weight: 700; font-size: 12px;
+    color: var(--ink-soft); margin-top: 2px;
+  }
+  @media (hover: hover) {
+    .part-row button.part:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
+  }
+  .part-row button.part.active {
+    background: var(--lemon);
+    transform: translate(1px,1px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  .part-row button.part.active small { color: var(--ink); }
+  .opt-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 8px 0 8px; }
   .opt-row button.opt {
     padding: 16px 12px;
     border: 3px solid var(--ink);
@@ -434,11 +474,19 @@
       <h1><span class="underline-wave">Week 4 단어</span> 테스트</h1>
       <p>새콤달콤 오늘의 단어 한 입! 영↔한 섞어서 출제돼요.</p>
     </div>
+    <div class="section-label">PART 선택</div>
+    <div class="part-row" id="partRow">
+      <button class="part active" data-part="1">Part 1<small>1~132번</small></button>
+      <button class="part" data-part="2">Part 2<small>133~264번</small></button>
+      <button class="part" data-part="3">Part 3<small>265~395번</small></button>
+      <button class="part" data-part="4">Part 4<small>396~526번</small></button>
+    </div>
+    <div class="section-label">문항 수</div>
     <div class="opt-row" id="optRow">
       <button class="opt" data-count="10">10문항<small>가벼운 한 잔</small></button>
       <button class="opt active" data-count="20">20문항<small>기본 레몬</small></button>
       <button class="opt" data-count="30">30문항<small>레몬 더블샷</small></button>
-      <button class="opt" data-count="all">전체<small>풀 스퀴즈 🏆</small></button>
+      <button class="opt" data-count="all">Part 전체<small>풀 스퀴즈 🏆</small></button>
     </div>
     <button class="btn-primary" id="startBtn">시작하기 🍋</button>
     <button class="btn-ghost" id="lookupBtn">단어장 펼쳐보기 📖</button>
@@ -505,11 +553,22 @@ const sample = (arr, n, exclude) => {
   return shuffle(pool.slice()).slice(0, n);
 };
 
-let state = { questions: [], current: 0, wrong: [], answered: false };
+let state = { questions: [], current: 0, wrong: [], answered: false, partLabel: 'Part 1' };
 let selectedCount = 20;
+let selectedPart = 1;
+
+// Split VOCAB into 4 parts (~132 each)
+function getPartVocab(part) {
+  const total = VOCAB.length;
+  const perPart = Math.ceil(total / 4);
+  const start = (part - 1) * perPart;
+  const end = Math.min(start + perPart, total);
+  return VOCAB.slice(start, end);
+}
 
 function buildQuestions(count) {
-  const pool = shuffle(VOCAB.slice()).slice(0, count === 'all' ? VOCAB.length : count);
+  const partVocab = getPartVocab(selectedPart);
+  const pool = shuffle(partVocab.slice()).slice(0, count === 'all' ? partVocab.length : Math.min(count, partVocab.length));
   return pool.map(function(item) {
     const en = item[0], ko = item[1];
     const direction = Math.random() < 0.5 ? 'en2ko' : 'ko2en';
@@ -533,7 +592,7 @@ function show(screen) {
 
 function renderQuestion() {
   const q = state.questions[state.current];
-  $('counter').textContent = (state.current+1) + ' / ' + state.questions.length;
+  $('counter').textContent = state.partLabel + ' · ' + (state.current+1) + '/' + state.questions.length;
   $('bar').style.width = ((state.current/state.questions.length)*100) + '%';
   $('qmeta').textContent = q.direction === 'en2ko' ? '영어 → 한국어' : '한국어 → 영어';
   $('qmeta').className = 'qmeta ' + (q.direction === 'en2ko' ? 'en' : 'ko');
@@ -599,7 +658,7 @@ function showResult() {
   else if (pct >= 40) { emoji = '📖'; title = '복습이 필요해요'; sub = '틀린 단어 꼭 보고 가요!'; }
   else if (pct < 40) { emoji = '🌱'; title = '다시 도전!'; sub = '단어장을 보며 천천히 익혀봐요!'; }
   $('rEmoji').textContent = emoji;
-  $('rTitle').textContent = title;
+  $('rTitle').textContent = state.partLabel + ' ' + title;
   $('rSub').textContent = sub;
 
   const wrongBox = $('wrongBox');
@@ -623,6 +682,7 @@ function buildKakaoMessage() {
   const y = date.getFullYear(), m = date.getMonth()+1, d = date.getDate();
   let msg = '🍋 EngFit 영핏 단어 테스트 결과\n';
   msg += '📅 ' + y + '.' + String(m).padStart(2,'0') + '.' + String(d).padStart(2,'0') + '\n';
+  msg += '📚 ' + state.partLabel + '\n';
   msg += '\n✅ ' + state.questions.length + '문항 중 ' + (state.questions.length - state.wrong.length) + '개 정답';
   msg += ' (' + Math.round(((state.questions.length-state.wrong.length)/state.questions.length)*100) + '점)\n';
   if (state.wrong.length > 0) {
@@ -692,7 +752,18 @@ document.addEventListener('DOMContentLoaded', function() {
       selectedCount = c === 'all' ? 'all' : parseInt(c, 10);
     });
   });
+  // Part selector
+  const parts = document.querySelectorAll('#partRow .part');
+  parts.forEach(function(b) {
+    b.addEventListener('click', function() {
+      parts.forEach(function(x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      selectedPart = parseInt(b.dataset.part, 10);
+    });
+  });
+
   $('startBtn').addEventListener('click', function() {
+    state.partLabel = 'Part ' + selectedPart;
     state.questions = buildQuestions(selectedCount);
     state.current = 0; state.wrong = [];
     show('quiz'); renderQuestion();
