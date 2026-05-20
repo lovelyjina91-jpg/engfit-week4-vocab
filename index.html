@@ -169,6 +169,7 @@
   }
   .part-row button.part.active small { color: var(--ink); }
   .opt-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 8px 0 8px; }
+  .opt-row.single { grid-template-columns: 1fr; }
   .opt-row button.opt {
     padding: 16px 12px;
     border: 3px solid var(--ink);
@@ -482,11 +483,8 @@
       <button class="part" data-part="4">Part 4<small>396~526번</small></button>
     </div>
     <div class="section-label">문항 수</div>
-    <div class="opt-row" id="optRow">
-      <button class="opt" data-count="10">10문항<small>가벼운 한 잔</small></button>
-      <button class="opt active" data-count="20">20문항<small>기본 레몬</small></button>
-      <button class="opt" data-count="30">30문항<small>레몬 더블샷</small></button>
-      <button class="opt" data-count="all">Part 전체<small>풀 스퀴즈 🏆</small></button>
+    <div class="opt-row single" id="optRow">
+      <button class="opt active" data-count="all">Part 전체 풀기 🏆<small>풀 스퀴즈</small></button>
     </div>
     <button class="btn-primary" id="startBtn">시작하기 🍋</button>
     <button class="btn-ghost" id="lookupBtn">단어장 펼쳐보기 📖</button>
@@ -554,7 +552,7 @@ const sample = (arr, n, exclude) => {
 };
 
 let state = { questions: [], current: 0, wrong: [], answered: false, partLabel: 'Part 1' };
-let selectedCount = 20;
+let selectedCount = 'all';
 let selectedPart = 1;
 
 // Split VOCAB into 4 parts (~132 each)
