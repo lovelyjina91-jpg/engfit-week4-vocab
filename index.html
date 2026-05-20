@@ -482,7 +482,7 @@
       <button class="part" data-part="3">Part 3<small>265~395번</small></button>
       <button class="part" data-part="4">Part 4<small>396~526번</small></button>
     </div>
-    <button class="btn-primary" id="startBtn">Part 전체 시작하기 🏆</button>
+    <p style="text-align:center;font-family:'Caveat',cursive;font-size:17px;color:var(--ink-soft);margin:14px 0 4px">↑ Part를 누르면 바로 시작됩니다 ✨</p>
     <button class="btn-ghost" id="lookupBtn">단어장 펼쳐보기 📖</button>
   </section>
 
@@ -737,21 +737,18 @@ function renderVocabList(filter) {
 
 // === Bind events ===
 document.addEventListener('DOMContentLoaded', function() {
-  // Part selector
+  // Part selector — clicking a Part immediately starts the quiz
   const parts = document.querySelectorAll('#partRow .part');
   parts.forEach(function(b) {
     b.addEventListener('click', function() {
       parts.forEach(function(x) { x.classList.remove('active'); });
       b.classList.add('active');
       selectedPart = parseInt(b.dataset.part, 10);
+      state.partLabel = 'Part ' + selectedPart;
+      state.questions = buildQuestions(selectedCount);
+      state.current = 0; state.wrong = [];
+      show('quiz'); renderQuestion();
     });
-  });
-
-  $('startBtn').addEventListener('click', function() {
-    state.partLabel = 'Part ' + selectedPart;
-    state.questions = buildQuestions(selectedCount);
-    state.current = 0; state.wrong = [];
-    show('quiz'); renderQuestion();
   });
   $('copyBtn').addEventListener('click', copyKakao);
   $('restartBtn').addEventListener('click', function() { show('start'); });
