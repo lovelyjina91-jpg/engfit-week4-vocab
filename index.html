@@ -482,11 +482,7 @@
       <button class="part" data-part="3">Part 3<small>265~395번</small></button>
       <button class="part" data-part="4">Part 4<small>396~526번</small></button>
     </div>
-    <div class="section-label">문항 수</div>
-    <div class="opt-row single" id="optRow">
-      <button class="opt active" data-count="all">Part 전체 풀기 🏆<small>풀 스퀴즈</small></button>
-    </div>
-    <button class="btn-primary" id="startBtn">시작하기 🍋</button>
+    <button class="btn-primary" id="startBtn">Part 전체 시작하기 🏆</button>
     <button class="btn-ghost" id="lookupBtn">단어장 펼쳐보기 📖</button>
   </section>
 
@@ -741,15 +737,6 @@ function renderVocabList(filter) {
 
 // === Bind events ===
 document.addEventListener('DOMContentLoaded', function() {
-  const opts = document.querySelectorAll('#optRow .opt');
-  opts.forEach(function(b) {
-    b.addEventListener('click', function() {
-      opts.forEach(function(x) { x.classList.remove('active'); });
-      b.classList.add('active');
-      const c = b.dataset.count;
-      selectedCount = c === 'all' ? 'all' : parseInt(c, 10);
-    });
-  });
   // Part selector
   const parts = document.querySelectorAll('#partRow .part');
   parts.forEach(function(b) {
